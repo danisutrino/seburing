@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokasi — Desa Seburing</title>
+<meta name="description" content="Koordinat dan peta rute menuju Desa Seburing, Kecamatan Semparuk, Kabupaten Sambas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand" style="text-decoration:none;"><span class="dot"></span>Desa Seburing</a>
+    <button class="nav-toggle" aria-label="Buka menu" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+    <ul id="navlinks">
+      <li><a href="tentang.html">Tentang</a></li>
+      <li><a href="sejarah.html">Sejarah</a></li>
+      <li><a href="ekonomi.html">Ekonomi</a></li>
+      <li><a href="galeri.html">Galeri</a></li>
+      <li><a href="potensi_desa.html">Potensi</a></li>
+      <li><a href="pendidikan.html">Pendidikan</a></li>
+      <li><a href="wilayah.html">Wilayah</a></li>
+      <li><a href="lokasi.html" class="active">Lokasi</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="blob" style="width:300px;height:300px; top:-60px; right:6%; background:var(--orchid);"></div>
+  <div class="blob" style="width:260px;height:260px; bottom:-60px; left:4%; background:var(--leaf-green); animation-delay:4s;"></div>
+  <div class="wrap">
+    <span class="eyebrow">Temukan Kami</span>
+    <h1>Peta menuju Desa Seburing</h1>
+    <p class="lede">Tandai lokasinya di ponselmu — satu ketuk langsung mengarahkan rute menuju Seburing.</p>
+  </div>
+</header>
+
+<main>
+<section id="lokasi">
+  <div class="wrap">
+    <div class="map-shell reveal">
+      <div class="map-info">
+        <div class="pin">📍</div>
+        <h3>Seburing, Semparuk, Sambas</h3>
+        <p>Terletak di jalur sungai Kecamatan Semparuk, dapat dijangkau melalui jalan darat dari pusat Kabupaten Sambas maupun Kota Singkawang.</p>
+        <span class="coord-chip">🧭 1°8′11.65″ LU, 109°3′33.62″ BT</span>
+        <a class="btn-maps" href="https://maps.app.goo.gl/2kuRjCx89Lzyv1Hk7?g_st=ic" target="_blank" rel="noopener">
+          Buka Rute di Google Maps →
+        </a>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=1.136569,109.059339+(Desa+Seburing)&z=15&output=embed" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Desa Seburing"></iframe>
+      </div>
+    </div>
+
+    <div class="page-nav reveal">
+      <a href="wilayah.html">← Wilayah</a>
+      <a href="index.html">Kembali ke Beranda →</a>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<footer id="kontak">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Desa Seburing</h4>
+        <p style="font-size:0.9rem; max-width:24rem;">Kecamatan Semparuk, Kabupaten Sambas, Provinsi Kalimantan Barat. Portofolio ini disusun untuk memperkenalkan wajah, sejarah, dan potensi desa kepada khalayak yang lebih luas.</p>
+      </div>
+      <div>
+        <h4>Jelajahi</h4>
+        <ul>
+          <li><a href="tentang.html">Tentang Desa</a></li>
+          <li><a href="sejarah.html">Sejarah</a></li>
+          <li><a href="ekonomi.html">Ekonomi</a></li>
+          <li><a href="galeri.html">Galeri</a></li>
+          <li><a href="potensi_desa.html">Potensi Desa</a></li>
+          <li><a href="pendidikan.html">Pendidikan</a></li>
+          <li><a href="wilayah.html">Wilayah</a></li>
+          <li><a href="lokasi.html">Lokasi</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Referensi Resmi</h4>
+        <ul>
+          <li><a href="https://seburing.semparuk.id/" target="_blank" rel="noopener">Website Resmi Desa Seburing</a></li>
+          <li><a href="https://semparuk.id/" target="_blank" rel="noopener">Website Kecamatan Semparuk</a></li>
+          <li><a href="https://id.wikipedia.org/wiki/Seburing,_Semparuk,_Sambas" target="_blank" rel="noopener">Wikipedia — Seburing</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Portofolio Desa Seburing. Dibuat untuk keperluan promosi desa.</span>
+      <span class="badge-credit">by: Dani Sutrisno RPL</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
