@@ -40,4 +40,51 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { threshold: 0.15 });
     items.forEach(function (i) { io.observe(i); });
   }
+
+  // === Form Kontak -> Google Sheets (lewat Google Apps Script) ===
+  // Ganti URL di bawah ini dengan URL Web App hasil Deploy Apps Script kamu
+  var SCRIPT_URL = "https://script.google.com/macros/s/XXXXXXXXXXXX/exec";
+
+  var formKontak = document.getElementById('formKontak');
+  if (formKontak) {
+    formKontak.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      var namaEl = document.getElementById('nama');
+      var emailEl = document.getElementById('email');
+      var pesanEl = document.getElementById('pesan');
+      var status = document.getElementById('statusKirim');
+      var submitBtn = formKontak.querySelector('button[type="submit"]');
+
+      var data = {
+        nama: namaEl ? namaEl.value : '',
+        email: emailEl ? emailEl.value : '',
+        pesan: pesanEl ? pesanEl.value : ''
+      };
+
+      if (status) status.textContent = 'Mengirim...';
+      if (submitBtn) submitBtn.disabled = true;
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(data)
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (res) {
+          if (res.result === 'success') {
+            if (status) status.textContent = 'Pesan terkirim, terima kasih!';
+            formKontak.reset();
+          } else {
+            if (status) status.textContent = 'Gagal mengirim pesan. Coba lagi.';
+          }
+        })
+        .catch(function () {
+          if (status) status.textContent = 'Terjadi kesalahan jaringan.';
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
+    });
+  }
 });
