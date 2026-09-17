@@ -168,6 +168,45 @@
     text-decoration:none;
   }
   .social-row a:hover{border-color:var(--purple);color:var(--purple-deep);}
+
+  /* ---- Navigasi sebelumnya / selanjutnya ---- */
+  .page-nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    padding:28px 0 64px;
+    border-top:1px solid var(--line);
+  }
+  .page-nav a{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    text-decoration:none;
+    color:var(--ink);
+    padding:14px 22px;
+    border-radius:16px;
+    border:1px solid var(--line);
+    background:#fff;
+    transition:border-color .15s ease, background .15s ease;
+    max-width:46%;
+  }
+  .page-nav a:hover{border-color:var(--purple);background:var(--cream-card);}
+  .page-nav .dir{
+    font-size:0.78rem;
+    color:var(--muted);
+    font-weight:500;
+  }
+  .page-nav .target{
+    font-family:'Playfair Display',serif;
+    font-weight:700;
+    font-size:1.05rem;
+  }
+  .page-nav .next{text-align:right;align-items:flex-end;margin-left:auto;}
+  @media (max-width:520px){
+    .page-nav a{padding:12px 16px;}
+    .page-nav .target{font-size:0.95rem;}
+  }
 </style>
 </head>
 <body>
@@ -185,12 +224,10 @@
     <div class="form-success" id="formSuccess">Pesan terkirim. Terima kasih, kami akan segera membalas.</div>
 
     <!--
-      Ganti "YOUR_FORM_ID" di bawah dengan ID dari layanan form statis
-      (mis. Formspree: https://formspree.io — gratis, tanpa backend sendiri).
-      Alternatif paling sederhana tanpa layanan pihak ketiga: ganti method/action
-      dengan mailto:desaseburing@email.com (lihat catatan di bawah formulir).
+      Ganti URL di bawah dengan "Web app URL" hasil deploy Apps Script
+      dari Google Sheets "BukuTamu" (Extensions → Apps Script → Deploy → Web app).
     -->
-    <form id="kontakForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <form id="kontakForm" action="https://script.google.com/macros/s/GANTI_DENGAN_WEB_APP_URL/exec" method="POST">
       <div class="row2">
         <div class="field">
           <label for="nama">Nama</label>
@@ -239,6 +276,17 @@
   </div>
 </div>
 
+<div class="wrap page-nav">
+  <a href="lokasi.html" class="prev">
+    <span class="dir">← Sebelumnya</span>
+    <span class="target">Lokasi</span>
+  </a>
+  <a href="index.html" class="next">
+    <span class="dir">Selanjutnya →</span>
+    <span class="target">Beranda</span>
+  </a>
+</div>
+
 <script>
   // Tampilan pesan sukses sederhana (opsional, hanya efek UI).
   // Jika menggunakan Formspree/layanan sejenis, submit form akan
@@ -249,21 +297,27 @@
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     const data = new FormData(form);
+    const submitBtn = form.querySelector('.submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Mengirim...';
+
     try {
-      const res = await fetch(form.action, {
+      // Google Apps Script web app tidak mengizinkan fetch membaca respons
+      // (CORS), jadi kita pakai mode 'no-cors': request tetap terkirim dan
+      // dieksekusi di Sheets, hanya isinya tidak bisa dibaca dari sini.
+      await fetch(form.action, {
         method: 'POST',
         body: data,
-        headers: { 'Accept': 'application/json' }
+        mode: 'no-cors'
       });
-      if (res.ok) {
-        success.style.display = 'block';
-        form.reset();
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        alert('Terjadi kendala saat mengirim pesan. Silakan coba lagi atau hubungi kami lewat email.');
-      }
+      success.style.display = 'block';
+      form.reset();
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } catch (err) {
       alert('Terjadi kendala saat mengirim pesan. Silakan coba lagi atau hubungi kami lewat email.');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Kirim Pesan';
     }
   });
 </script>
