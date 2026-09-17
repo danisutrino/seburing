@@ -221,6 +221,7 @@
     align-items:center;
     justify-content:space-between;
     padding:16px 0;
+    gap:20px;
   }
   .brand-link{
     display:flex;
@@ -228,6 +229,7 @@
     gap:10px;
     text-decoration:none;
     color:var(--ink);
+    flex-shrink:0;
   }
   .brand-dot{
     width:28px;height:28px;border-radius:50%;
@@ -239,40 +241,35 @@
     font-weight:700;
     font-size:1.25rem;
   }
-  .menu-toggle{
-    background:none;
-    border:none;
-    cursor:pointer;
-    color:var(--purple-deep);
-    padding:8px;
+  .nav-menu{
     display:flex;
     align-items:center;
+    gap:6px;
+    overflow-x:auto;
+    scrollbar-width:none;
   }
-  .menu-toggle svg{width:26px;height:26px;}
-  .nav-dropdown{
-    display:none;
-    flex-direction:column;
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:10px;
-    position:absolute;
-    right:24px;
-    top:64px;
-    box-shadow:0 12px 28px rgba(30,20,10,0.12);
-    min-width:200px;
-  }
-  .nav-dropdown.open{display:flex;}
-  .nav-dropdown a{
-    padding:10px 14px;
-    border-radius:10px;
+  .nav-menu::-webkit-scrollbar{display:none;}
+  .nav-menu a{
     text-decoration:none;
     color:var(--ink);
-    font-size:0.95rem;
+    font-size:0.98rem;
     font-weight:500;
+    padding:9px 18px;
+    border-radius:999px;
+    white-space:nowrap;
+    transition:background .15s ease, color .15s ease;
   }
-  .nav-dropdown a:hover{background:var(--cream-card);color:var(--purple-deep);}
-  .nav-dropdown a.current{color:var(--purple);font-weight:700;}
+  .nav-menu a:hover{background:var(--cream-card);}
+  .nav-menu a.current{
+    background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);
+    color:#fff;
+    font-weight:700;
+  }
+  .nav-menu a.current:hover{background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);}
+  @media (max-width:900px){
+    .navbar-inner{flex-wrap:wrap;}
+    .nav-menu{width:100%;justify-content:flex-start;}
+  }
 </style>
 </head>
 <body>
@@ -283,26 +280,18 @@
       <span class="brand-dot"></span>
       <span>Desa Seburing</span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-        <line x1="4" y1="7" x2="20" y2="7"/>
-        <line x1="4" y1="12" x2="20" y2="12"/>
-        <line x1="4" y1="17" x2="20" y2="17"/>
-      </svg>
-    </button>
+    <nav class="nav-menu">
+      <a href="tentang.html">Tentang</a>
+      <a href="sejarah.html">Sejarah</a>
+      <a href="ekonomi.html">Ekonomi</a>
+      <a href="galeri.html">Galeri</a>
+      <a href="potensi_desa.html">Potensi</a>
+      <a href="pendidikan.html">Pendidikan</a>
+      <a href="wilayah.html">Wilayah</a>
+      <a href="lokasi.html">Lokasi</a>
+      <a href="kontak.html" class="current">Kontak</a>
+    </nav>
   </div>
-  <nav class="nav-dropdown" id="navDropdown">
-    <a href="index.html">Beranda</a>
-    <a href="tentang.html">Tentang</a>
-    <a href="sejarah.html">Sejarah</a>
-    <a href="ekonomi.html">Ekonomi</a>
-    <a href="galeri.html">Galeri</a>
-    <a href="potensi_desa.html">Potensi</a>
-    <a href="pendidikan.html">Pendidikan</a>
-    <a href="wilayah.html">Wilayah</a>
-    <a href="lokasi.html">Lokasi</a>
-    <a href="kontak.html" class="current">Kontak</a>
-  </nav>
 </div>
 
 <div class="wrap hero">
@@ -382,18 +371,6 @@
 </div>
 
 <script>
-  // Toggle navbar dropdown
-  const menuToggle = document.getElementById('menuToggle');
-  const navDropdown = document.getElementById('navDropdown');
-  menuToggle.addEventListener('click', function () {
-    navDropdown.classList.toggle('open');
-  });
-  document.addEventListener('click', function (e) {
-    if (!navDropdown.contains(e.target) && !menuToggle.contains(e.target)) {
-      navDropdown.classList.remove('open');
-    }
-  });
-
   // Tampilan pesan sukses sederhana (opsional, hanya efek UI).
   // Jika menggunakan Formspree/layanan sejenis, submit form akan
   // redirect ke halaman mereka kecuali di-handle via fetch() seperti ini:
