@@ -266,6 +266,18 @@
     font-weight:700;
   }
   .nav-menu a.current:hover{background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);}
+  .nav-menu a.btn-pengaduan{
+    background:#FBEFD8;
+    color:#8A5A12;
+    font-weight:700;
+  }
+  .nav-menu a.btn-pengaduan:hover{background:#F5E3BE;}
+  .nav-menu a.btn-admin{
+    background:var(--plum);
+    color:#fff;
+    font-weight:700;
+  }
+  .nav-menu a.btn-admin:hover{background:var(--plum-soft);}
   @media (max-width:900px){
     .navbar-inner{flex-wrap:wrap;}
     .nav-menu{width:100%;justify-content:flex-start;}
@@ -290,6 +302,8 @@
       <a href="wilayah.html">Wilayah</a>
       <a href="lokasi.html">Lokasi</a>
       <a href="kontak.html" class="current">Kontak</a>
+      <a href="pengaduan.html" class="btn-pengaduan">📢 Pengaduan</a>
+      <a href="https://script.google.com/macros/s/GANTI_DENGAN_URL_APPS_SCRIPT_PENGADUAN/exec?page=admin" target="_blank" class="btn-admin">🔐 Admin</a>
     </nav>
   </div>
 </div>
@@ -321,11 +335,6 @@
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="nama@email.com" required>
         </div>
-      </div>
-
-      <div class="field">
-        <label for="subjek">Subjek</label>
-        <input type="text" id="subjek" name="subjek" placeholder="Topik pesan Anda" required>
       </div>
 
       <div class="field">
