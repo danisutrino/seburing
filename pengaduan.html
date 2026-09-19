@@ -1,141 +1,2281 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pengaduan — Desa Seburing</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --cream:#F5F1E7;
-    --cream-card:#EFE9DB;
-    --ink:#241B2E;
-    --plum:#1D1229;
-    --plum-soft:#2A1E3B;
-    --muted:#6f6a63;
-    --purple:#6E4AA8;
-    --purple-deep:#4E3480;
-    --green:#3E9C6E;
-    --line:#e4ddcd;
-    --radius:22px;
-  }
-  *{box-sizing:border-box;}
-  body{
-    margin:0;
-    background:var(--cream);
-    color:var(--ink);
-    font-family:'Inter',sans-serif;
-    line-height:1.55;
-  }
-  h1,h2,h3{
-    font-family:'Playfair Display',serif;
-    font-weight:700;
-    margin:0;
-  }
-  .wrap{max-width:1040px;margin:0 auto;padding:0 24px;}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  /* ---- Navbar (identik dengan halaman lain) ---- */
-  .navbar{position:sticky;top:0;z-index:50;background:var(--cream);border-bottom:1px solid var(--line);}
-  .navbar-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0;gap:20px;}
-  .brand-link{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);flex-shrink:0;}
-  .brand-dot{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);flex-shrink:0;}
-  .brand-link span{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;}
-  .nav-menu{display:flex;align-items:center;gap:6px;overflow-x:auto;scrollbar-width:none;}
-  .nav-menu::-webkit-scrollbar{display:none;}
-  .nav-menu a{text-decoration:none;color:var(--ink);font-size:0.98rem;font-weight:500;padding:9px 18px;border-radius:999px;white-space:nowrap;transition:background .15s ease, color .15s ease;}
-  .nav-menu a:hover{background:var(--cream-card);}
-  .nav-menu a.current{background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);color:#fff;font-weight:700;}
-  .nav-menu a.current:hover{background:linear-gradient(135deg, var(--purple) 0%, var(--green) 100%);}
-  .nav-menu a.btn-pengaduan{background:#FBEFD8;color:#8A5A12;font-weight:700;}
-  .nav-menu a.btn-pengaduan.current{background:#F0C978;color:#5c3c0a;}
-  .nav-menu a.btn-pengaduan:hover{background:#F5E3BE;}
-  .nav-menu a.btn-admin{background:var(--plum);color:#fff;font-weight:700;}
-  .nav-menu a.btn-admin:hover{background:var(--plum-soft);}
-  @media (max-width:900px){.navbar-inner{flex-wrap:wrap;} .nav-menu{width:100%;justify-content:flex-start;}}
+  <title>Pengaduan Masyarakat - Desa Seburing</title>
 
-  /* ---- Hero ---- */
-  .hero{padding:72px 0 40px;}
-  .eyebrow{color:var(--purple-deep);font-weight:600;font-size:0.95rem;margin-bottom:14px;}
-  .hero h1{font-size:2.4rem;line-height:1.2;max-width:640px;}
-  .hero p{color:var(--muted);max-width:560px;font-size:1.05rem;margin-top:16px;}
-  @media (max-width:520px){.hero h1{font-size:1.9rem;}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  /* ---- Catatan ---- */
-  .note{
-    background:#FBEFD8;
-    border:1px solid #eddcb0;
-    color:#6b4a12;
-    border-radius:16px;
-    padding:18px 22px;
-    font-size:0.95rem;
-    margin-bottom:28px;
-  }
-  .note strong{color:#8A5A12;}
+  <style>
 
-  /* ---- Wrapper form (iframe Apps Script) ---- */
-  .form-wrap{
-    background:#fff;
-    border:1px solid var(--line);
-    border-radius:var(--radius);
-    overflow:hidden;
-    margin-bottom:70px;
-  }
-  .form-wrap iframe{
-    width:100%;
-    height:820px;
-    border:none;
-    display:block;
-  }
-  @media (max-width:600px){
-    .form-wrap iframe{height:900px;}
-  }
-</style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      color: #242424;
+      background: #fbf9f5;
+      line-height: 1.6;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    :root {
+      --purple-dark: #2a1848;
+      --purple: #5b2a8c;
+      --purple-light: #8a4fc9;
+
+      --green-dark: #157a5c;
+      --green: #3fae6b;
+      --green-light: #9fdd5c;
+
+      --cream: #fbf9f5;
+      --cream-dark: #f3eee7;
+
+      --text: #242424;
+      --muted: #707070;
+
+      --white: #ffffff;
+
+      --red: #c74747;
+
+      --shadow:
+        0 18px 45px rgba(42, 24, 72, 0.10);
+
+      --radius: 22px;
+    }
+
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      background:
+        rgba(251, 249, 245, 0.94);
+
+      backdrop-filter: blur(15px);
+
+      border-bottom:
+        1px solid rgba(42, 24, 72, 0.08);
+    }
+
+    .nav-container {
+      width: min(1180px, 92%);
+      margin: auto;
+
+      height: 76px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--purple-dark);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 12px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--green-dark)
+        );
+
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 700;
+      color: #484848;
+
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--purple);
+    }
+
+    .nav-toggle {
+      display: none;
+
+      border: 0;
+      background: transparent;
+
+      font-size: 26px;
+      color: var(--purple-dark);
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+
+      padding:
+        90px 0 85px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f8f1ff 0%,
+          #fbf9f5 48%,
+          #effbf5 100%
+        );
+    }
+
+    .hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 380px;
+      height: 380px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(138, 79, 201, 0.10);
+
+      right: -120px;
+      top: -130px;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 280px;
+      height: 280px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(63, 174, 107, 0.09);
+
+      left: -130px;
+      bottom: -150px;
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      margin: auto;
+
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding:
+        7px 13px;
+
+      border-radius: 999px;
+
+      background: #efe4ff;
+      color: var(--purple);
+
+      font-size: 12px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .hero h1 {
+      margin-top: 18px;
+
+      font-family: "Fraunces", serif;
+
+      font-size:
+        clamp(42px, 6vw, 72px);
+
+      line-height: 1.03;
+
+      color: var(--purple-dark);
+    }
+
+    .hero h1 span {
+      color: var(--green-dark);
+    }
+
+    .hero p {
+      max-width: 650px;
+
+      margin: 20px auto 0;
+
+      color: #666;
+
+      font-size: 16px;
+    }
+
+    /* =====================================================
+       MAIN
+    ===================================================== */
+
+    .main {
+      padding: 75px 0 100px;
+    }
+
+    .layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.25fr)
+        minmax(320px, 0.75fr);
+
+      gap: 28px;
+
+      align-items: start;
+    }
+
+    /* =====================================================
+       CARD
+    ===================================================== */
+
+    .card {
+      background: var(--white);
+
+      border:
+        1px solid rgba(42, 24, 72, 0.08);
+
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+
+      padding: 32px;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+
+      margin-bottom: 25px;
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      background: #efe4ff;
+
+      color: var(--purple);
+
+      font-size: 20px;
+    }
+
+    .card-title h2 {
+      font-family: "Fraunces", serif;
+
+      font-size: 28px;
+
+      color: var(--purple-dark);
+
+      line-height: 1.2;
+    }
+
+    .card-title p {
+      margin-top: 5px;
+
+      font-size: 13px;
+
+      color: var(--muted);
+    }
+
+    /* =====================================================
+       FORM
+    ===================================================== */
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-row {
+      display: grid;
+
+      grid-template-columns:
+        1fr 1fr;
+
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 7px;
+
+      font-size: 13px;
+      font-weight: 800;
+
+      color: #3b3b3b;
+    }
+
+    label span {
+      color: var(--red);
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+
+      border:
+        1px solid #ded9e3;
+
+      background: #fff;
+
+      border-radius: 13px;
+
+      padding:
+        13px 15px;
+
+      outline: none;
+
+      color: var(--text);
+
+      transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color:
+        var(--purple-light);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(138, 79, 201, 0.10);
+    }
+
+    textarea {
+      resize: vertical;
+
+      min-height: 150px;
+    }
+
+    .textarea-wrapper {
+      position: relative;
+    }
+
+    .counter {
+      position: absolute;
+
+      right: 12px;
+      bottom: 10px;
+
+      color: #999;
+
+      font-size: 11px;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+
+      margin:
+        20px 0;
+    }
+
+    .checkbox input {
+      width: auto;
+
+      margin-top: 4px;
+
+      accent-color:
+        var(--purple);
+    }
+
+    .checkbox label {
+      margin: 0;
+
+      font-size: 12px;
+
+      line-height: 1.5;
+
+      font-weight: 500;
+
+      color: #666;
+    }
+
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+
+    .btn {
+      border: 0;
+
+      border-radius: 13px;
+
+      padding:
+        14px 20px;
+
+      font-weight: 800;
+
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s,
+        opacity 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn:disabled {
+      cursor: not-allowed;
+
+      opacity: 0.6;
+
+      transform: none;
+    }
+
+    .btn-primary {
+      width: 100%;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--purple-light)
+        );
+
+      box-shadow:
+        0 10px 25px
+        rgba(91, 42, 140, 0.22);
+    }
+
+    /* =====================================================
+       ALERT
+    ===================================================== */
+
+    .alert {
+      display: none;
+
+      padding: 14px 16px;
+
+      border-radius: 13px;
+
+      margin-bottom: 18px;
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+    .alert.show {
+      display: block;
+    }
+
+    .alert.success {
+      color: #17603e;
+
+      background: #e9f8ef;
+
+      border:
+        1px solid #b9e6c9;
+    }
+
+    .alert.error {
+      color: #9b2f2f;
+
+      background: #fff0f0;
+
+      border:
+        1px solid #f1c5c5;
+    }
+
+    /* =====================================================
+       STATUS CARD
+    ===================================================== */
+
+    .status-card {
+      background:
+        linear-gradient(
+          145deg,
+          #2a1848,
+          #432067
+        );
+
+      color: white;
+
+      border: 0;
+    }
+
+    .status-card .card-title h2 {
+      color: white;
+    }
+
+    .status-card .card-title p {
+      color: rgba(255,255,255,.68);
+    }
+
+    .status-card .card-icon {
+      background:
+        rgba(255,255,255,.12);
+
+      color: white;
+    }
+
+    .status-card input {
+      background:
+        rgba(255,255,255,.10);
+
+      border:
+        1px solid rgba(255,255,255,.18);
+
+      color: white;
+    }
+
+    .status-card input::placeholder {
+      color:
+        rgba(255,255,255,.55);
+    }
+
+    .status-card .btn {
+      background:
+        var(--green);
+
+      box-shadow:
+        0 10px 25px
+        rgba(21, 122, 92, .25);
+
+      color: white;
+    }
+
+    .status-result {
+      margin-top: 18px;
+    }
+
+    .status-box {
+      padding: 18px;
+
+      border-radius: 16px;
+
+      background:
+        rgba(255,255,255,.08);
+
+      border:
+        1px solid
+        rgba(255,255,255,.10);
+    }
+
+    .status-head {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 18px;
+    }
+
+    .status-head h3 {
+      margin-top: 3px;
+
+      font-size: 17px;
+    }
+
+    .status-info {
+      display: grid;
+
+      gap: 9px;
+
+      font-size: 13px;
+
+      color:
+        rgba(255,255,255,.82);
+    }
+
+    .status-info strong {
+      color: white;
+    }
+
+    .response-box {
+      margin-top: 8px;
+
+      padding: 13px;
+
+      border-radius: 12px;
+
+      background:
+        rgba(159,221,92,.12);
+
+      border:
+        1px solid
+        rgba(159,221,92,.25);
+    }
+
+    .response-box p {
+      margin-top: 5px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      padding:
+        5px 10px;
+
+      border-radius: 999px;
+
+      font-size: 10px;
+
+      font-weight: 800;
+
+      white-space: nowrap;
+
+      text-transform: uppercase;
+    }
+
+    .status-baru {
+      background: #eadbff;
+      color: #67369b;
+    }
+
+    .status-diproses {
+      background: #d9f3e7;
+      color: #176a4d;
+    }
+
+    .status-selesai {
+      background: #e6f6cf;
+      color: #507719;
+    }
+
+    .status-ditolak {
+      background: #ffe0e0;
+      color: #9d3333;
+    }
+
+    /* =====================================================
+       INFO CARD
+    ===================================================== */
+
+    .info-card {
+      margin-top: 22px;
+
+      background:
+        #f5f0fb;
+
+      border:
+        1px solid #e5d9f3;
+    }
+
+    .info-list {
+      display: grid;
+
+      gap: 13px;
+
+      margin-top: 5px;
+    }
+
+    .info-item {
+      display: flex;
+
+      gap: 12px;
+
+      align-items: flex-start;
+    }
+
+    .info-number {
+      width: 29px;
+      height: 29px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      color: white;
+
+      background:
+        var(--purple);
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .info-item p {
+      font-size: 12px;
+
+      color: #666;
+    }
+
+    .info-item strong {
+      display: block;
+
+      color: #333;
+
+      margin-bottom: 2px;
+    }
+
+    /* =====================================================
+       REVEAL
+    ===================================================== */
+
+    .reveal {
+      opacity: 0;
+
+      transform:
+        translateY(18px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+
+      transform:
+        translateY(0);
+    }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
+    footer {
+      padding: 35px 0;
+
+      background:
+        var(--purple-dark);
+
+      color:
+        rgba(255,255,255,.75);
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+    footer strong {
+      color: white;
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 850px) {
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+
+        position: absolute;
+
+        left: 4%;
+        right: 4%;
+
+        top: 70px;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        background: white;
+
+        border-radius: 16px;
+
+        box-shadow: var(--shadow);
+
+        border:
+          1px solid
+          rgba(42,24,72,.08);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .hero {
+        padding:
+          65px 0 60px;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .main {
+        padding:
+          45px 0 70px;
+      }
+
+      .card {
+        padding: 22px;
+        border-radius: 18px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .nav-container {
+        height: 68px;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+
+      .brand-icon {
+        width: 37px;
+        height: 37px;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
 
-<div class="navbar">
-  <div class="wrap navbar-inner">
-    <a href="index.html" class="brand-link">
-      <span class="brand-dot"></span>
-      <span>Desa Seburing</span>
-    </a>
-    <nav class="nav-menu">
-      <a href="tentang.html">Tentang</a>
-      <a href="sejarah.html">Sejarah</a>
-      <a href="ekonomi.html">Ekonomi</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="potensi_desa.html">Potensi</a>
-      <a href="pendidikan.html">Pendidikan</a>
-      <a href="wilayah.html">Wilayah</a>
-      <a href="lokasi.html">Lokasi</a>
-      <a href="kontak.html">Kontak</a>
-      <a href="pengaduan.html" class="btn-pengaduan current">📢 Pengaduan</a>
-      <a href="https://script.google.com/macros/s/AKfycbxZRsmdBGtAiiwbSvkbm08UXNINqn6Yt2DkpvKfpXJNkoQtV1AO30gWAItqlXKc55J3CA/exec?page=admin" target="_blank" class="btn-admin">🔐 Admin</a>
-    </nav>
-  </div>
-</div>
+  <!-- =====================================================
+       NAVBAR
+  ===================================================== -->
 
-<div class="wrap hero">
-  <div class="eyebrow">Layanan Masyarakat</div>
-  <h1>Pengaduan Pelayanan</h1>
-  <p>Sampaikan keluhan, kritik, atau masukan untuk pelayanan Desa Seburing. Isi formulir di bawah dengan data yang benar dan simpan ID pengaduan yang diberikan.</p>
-</div>
+  <header class="navbar">
 
-<div class="wrap">
-  <div class="note">
-    <strong>📌 Catatan:</strong> Setelah mengirim pengaduan, simpan ID pengaduan yang muncul. ID tersebut digunakan untuk mengecek status dan tanggapan dari admin Desa Seburing.
-  </div>
+    <div class="nav-container">
 
-  <!-- Ganti src di bawah dengan Web App URL Apps Script Pengaduan setelah dideploy -->
-  <div class="form-wrap">
-    <iframe
-      src="https://script.google.com/macros/s/AKfycbxZRsmdBGtAiiwbSvkbm08UXNINqn6Yt2DkpvKfpXJNkoQtV1AO30gWAItqlXKc55J3CA/exec"
-      title="Form Pengaduan Desa Seburing">
-    </iframe>
-  </div>
-</div>
+      <a href="index.html" class="brand">
+
+        <span class="brand-icon">
+          ✦
+        </span>
+
+        <span>
+          Desa Seburing
+        </span>
+
+      </a>
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Buka menu"
+        type="button"
+      >
+        ☰
+      </button>
+
+      <nav
+        class="nav-links"
+        id="navlinks"
+      >
+
+        <a href="index.html">
+          Beranda
+        </a>
+
+        <a href="profil.html">
+          Profil Desa
+        </a>
+
+        <a href="layanan.html">
+          Layanan
+        </a>
+
+        <a
+          href="pengaduan.html"
+          class="active"
+        >
+          Pengaduan
+        </a>
+
+        <a href="admin-login.html">
+          Admin
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       HERO
+  ===================================================== -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <span class="eyebrow">
+          📢 Layanan Masyarakat
+        </span>
+
+        <h1>
+          Sampaikan
+          <span>Aduan Anda</span>
+        </h1>
+
+        <p>
+          Sampaikan pengaduan, keluhan, atau aspirasi
+          Anda kepada Pemerintah Desa Seburing.
+          Setiap laporan akan ditindaklanjuti dengan
+          transparan.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
+
+  <main class="main">
+
+    <div class="container">
+
+      <div class="layout">
+
+
+        <!-- =================================================
+             FORM PENGADUAN
+        ================================================= -->
+
+        <section class="card reveal">
+
+          <div class="card-title">
+
+            <div class="card-icon">
+              📝
+            </div>
+
+            <div>
+
+              <h2>
+                Form Pengaduan
+              </h2>
+
+              <p>
+                Isi data berikut dengan lengkap dan benar.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div
+            id="formAlert"
+            class="alert"
+          ></div>
+
+
+          <form
+            id="complaintForm"
+            novalidate
+          >
+
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <label for="nama">
+                  Nama Lengkap
+                  <span>*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="nama"
+                  name="nama"
+                  placeholder="Masukkan nama lengkap"
+                  maxlength="100"
+                  required
+                >
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="kontak">
+                  No. HP / WhatsApp
+                  <span>*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="kontak"
+                  name="kontak"
+                  placeholder="Contoh: 08123456789"
+                  maxlength="120"
+                  required
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="form-row">
+
+              <div class="form-group">
+
+                <label for="kategori">
+                  Kategori Pengaduan
+                  <span>*</span>
+                </label>
+
+                <!-- KATEGORI SUDAH DIISI LANGSUNG -->
+
+                <select
+                  id="kategori"
+                  name="kategori"
+                  required
+                >
+
+                  <option value="">
+                    Pilih kategori
+                  </option>
+
+                  <option value="Infrastruktur">
+                    Infrastruktur
+                  </option>
+
+                  <option value="Jalan dan Jembatan">
+                    Jalan dan Jembatan
+                  </option>
+
+                  <option value="Drainase dan Irigasi">
+                    Drainase dan Irigasi
+                  </option>
+
+                  <option value="Pelayanan Desa">
+                    Pelayanan Desa
+                  </option>
+
+                  <option value="Administrasi Kependudukan">
+                    Administrasi Kependudukan
+                  </option>
+
+                  <option value="Bantuan Sosial">
+                    Bantuan Sosial
+                  </option>
+
+                  <option value="Kesehatan">
+                    Kesehatan
+                  </option>
+
+                  <option value="Pendidikan">
+                    Pendidikan
+                  </option>
+
+                  <option value="Keamanan dan Ketertiban">
+                    Keamanan dan Ketertiban
+                  </option>
+
+                  <option value="Lingkungan">
+                    Lingkungan
+                  </option>
+
+                  <option value="Pertanian">
+                    Pertanian
+                  </option>
+
+                  <option value="Ekonomi dan UMKM">
+                    Ekonomi dan UMKM
+                  </option>
+
+                  <option value="Air Bersih">
+                    Air Bersih
+                  </option>
+
+                  <option value="Listrik dan Penerangan">
+                    Listrik dan Penerangan
+                  </option>
+
+                  <option value="Sarana dan Prasarana">
+                    Sarana dan Prasarana
+                  </option>
+
+                  <option value="Lainnya">
+                    Lainnya
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="form-group">
+
+                <label for="lokasi">
+                  Lokasi Kejadian
+                </label>
+
+                <input
+                  type="text"
+                  id="lokasi"
+                  name="lokasi"
+                  placeholder="Contoh: Dusun Seburing"
+                  maxlength="200"
+                >
+
+              </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="judul">
+                Judul Pengaduan
+                <span>*</span>
+              </label>
+
+              <input
+                type="text"
+                id="judul"
+                name="judul"
+                placeholder="Tuliskan judul pengaduan"
+                maxlength="150"
+                required
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="isi">
+                Isi Pengaduan
+                <span>*</span>
+              </label>
+
+              <div class="textarea-wrapper">
+
+                <textarea
+                  id="isi"
+                  name="isi"
+                  placeholder="Jelaskan pengaduan atau permasalahan yang ingin disampaikan secara lengkap..."
+                  maxlength="3000"
+                  required
+                ></textarea>
+
+                <span class="counter">
+                  <span id="isiCount">0</span>
+                  / 3000
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <div class="checkbox">
+
+              <input
+                type="checkbox"
+                id="persetujuan"
+                required
+              >
+
+              <label for="persetujuan">
+
+                Saya menyatakan bahwa informasi yang
+                saya sampaikan benar dan dapat
+                dipertanggungjawabkan.
+
+              </label>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              id="submitBtn"
+            >
+              ✈ Kirim Pengaduan
+            </button>
+
+          </form>
+
+        </section>
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================= -->
+
+        <aside>
+
+
+          <!-- CEK STATUS -->
+
+          <section
+            class="card status-card reveal"
+          >
+
+            <div class="card-title">
+
+              <div class="card-icon">
+                🔎
+              </div>
+
+              <div>
+
+                <h2>
+                  Cek Status
+                </h2>
+
+                <p>
+                  Pantau perkembangan pengaduan Anda.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <form id="statusForm">
+
+              <div class="form-group">
+
+                <label for="kodeStatus">
+                  Kode Pengaduan
+                </label>
+
+                <input
+                  type="text"
+                  id="kodeStatus"
+                  placeholder="Contoh: PGD-20260919-ABCDE"
+                  autocomplete="off"
+                >
+
+              </div>
+
+              <button
+                type="submit"
+                class="btn"
+              >
+                🔍 Cek Status
+              </button>
+
+            </form>
+
+
+            <div
+              id="statusResult"
+              class="status-result"
+            ></div>
+
+          </section>
+
+
+          <!-- INFORMASI -->
+
+          <section
+            class="card info-card reveal"
+          >
+
+            <div class="card-title">
+
+              <div class="card-icon">
+                ℹ
+              </div>
+
+              <div>
+
+                <h2>
+                  Cara Pengaduan
+                </h2>
+
+                <p>
+                  Ikuti langkah berikut.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div class="info-list">
+
+
+              <div class="info-item">
+
+                <div class="info-number">
+                  1
+                </div>
+
+                <p>
+
+                  <strong>
+                    Isi formulir
+                  </strong>
+
+                  Lengkapi data dan jelaskan
+                  pengaduan Anda.
+
+                </p>
+
+              </div>
+
+
+              <div class="info-item">
+
+                <div class="info-number">
+                  2
+                </div>
+
+                <p>
+
+                  <strong>
+                    Kirim laporan
+                  </strong>
+
+                  Pastikan data sudah benar,
+                  kemudian kirim.
+
+                </p>
+
+              </div>
+
+
+              <div class="info-item">
+
+                <div class="info-number">
+                  3
+                </div>
+
+                <p>
+
+                  <strong>
+                    Simpan kode
+                  </strong>
+
+                  Simpan kode pengaduan yang
+                  diberikan sistem.
+
+                </p>
+
+              </div>
+
+
+              <div class="info-item">
+
+                <div class="info-number">
+                  4
+                </div>
+
+                <p>
+
+                  <strong>
+                    Pantau status
+                  </strong>
+
+                  Gunakan kode tersebut untuk
+                  melihat perkembangan laporan.
+
+                </p>
+
+              </div>
+
+
+            </div>
+
+          </section>
+
+        </aside>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      © 2026
+      <strong>
+        Pemerintah Desa Seburing
+      </strong>
+      · Layanan Pengaduan Masyarakat
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       API GOOGLE APPS SCRIPT
+    ===================================================== */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbyyO-7rDVCGAe1eK1dT38IYZ7v0xkyFf-keURw77UYiTInyNNSq6HL-UA06gXPdn8LJ/exec";
+
+
+    /* =====================================================
+       DOM READY
+    ===================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        setupNavigation();
+
+        setupReveal();
+
+        setupComplaintForm();
+
+        setupStatusForm();
+
+        setupCounter();
+
+      }
+    );
+
+
+    /* =====================================================
+       NAVIGATION
+    ===================================================== */
+
+    function setupNavigation() {
+
+      const button =
+        document.getElementById(
+          "navToggle"
+        );
+
+      const links =
+        document.getElementById(
+          "navlinks"
+        );
+
+      if (!button || !links) {
+        return;
+      }
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          links.classList.toggle(
+            "open"
+          );
+
+        }
+      );
+
+
+      links
+        .querySelectorAll("a")
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              links.classList.remove(
+                "open"
+              );
+
+            }
+          );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       ANIMATION
+    ===================================================== */
+
+    function setupReveal() {
+
+      const elements =
+        document.querySelectorAll(
+          ".reveal"
+        );
+
+      if (!elements.length) {
+        return;
+      }
+
+      if (
+        window.matchMedia(
+          "(prefers-reduced-motion: reduce)"
+        ).matches
+      ) {
+
+        elements.forEach(
+          element =>
+            element.classList.add(
+              "show"
+            )
+        );
+
+        return;
+      }
+
+      const observer =
+        new IntersectionObserver(
+          entries => {
+
+            entries.forEach(
+              entry => {
+
+                if (
+                  entry.isIntersecting
+                ) {
+
+                  entry.target.classList.add(
+                    "show"
+                  );
+
+                  observer.unobserve(
+                    entry.target
+                  );
+
+                }
+
+              }
+            );
+
+          },
+          {
+            threshold: 0.12
+          }
+        );
+
+      elements.forEach(
+        element =>
+          observer.observe(element)
+      );
+
+    }
+
+
+    /* =====================================================
+       COUNTER
+    ===================================================== */
+
+    function setupCounter() {
+
+      const textarea =
+        document.getElementById(
+          "isi"
+        );
+
+      const counter =
+        document.getElementById(
+          "isiCount"
+        );
+
+      if (!textarea || !counter) {
+        return;
+      }
+
+      function updateCounter() {
+
+        counter.textContent =
+          textarea.value.length;
+
+      }
+
+      textarea.addEventListener(
+        "input",
+        updateCounter
+      );
+
+      updateCounter();
+
+    }
+
+
+    /* =====================================================
+       FORM PENGADUAN
+    ===================================================== */
+
+    function setupComplaintForm() {
+
+      const form =
+        document.getElementById(
+          "complaintForm"
+        );
+
+      if (!form) {
+        return;
+      }
+
+      form.addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+
+          if (!form.checkValidity()) {
+
+            form.reportValidity();
+
+            return;
+          }
+
+
+          const button =
+            document.getElementById(
+              "submitBtn"
+            );
+
+
+          const data = {
+
+            action:
+              "submitComplaint",
+
+            nama:
+              document
+                .getElementById("nama")
+                .value
+                .trim(),
+
+            kontak:
+              document
+                .getElementById("kontak")
+                .value
+                .trim(),
+
+            kategori:
+              document
+                .getElementById("kategori")
+                .value,
+
+            judul:
+              document
+                .getElementById("judul")
+                .value
+                .trim(),
+
+            isi:
+              document
+                .getElementById("isi")
+                .value
+                .trim(),
+
+            lokasi:
+              document
+                .getElementById("lokasi")
+                .value
+                .trim()
+
+          };
+
+
+          setButton(
+            button,
+            true,
+            "Mengirim..."
+          );
+
+
+          showAlert(
+            "",
+            ""
+          );
+
+
+          try {
+
+            const result =
+              await postJson(
+                data
+              );
+
+
+            if (!result.success) {
+
+              throw new Error(
+                result.message ||
+                "Pengaduan gagal dikirim."
+              );
+
+            }
+
+
+            form.reset();
+
+
+            document.getElementById(
+              "isiCount"
+            ).textContent =
+              "0";
+
+
+            showAlert(
+              `Pengaduan berhasil dikirim. Kode pengaduan Anda: ${result.data.kode}. Simpan kode tersebut untuk mengecek status.`,
+              "success"
+            );
+
+
+            const statusInput =
+              document.getElementById(
+                "kodeStatus"
+              );
+
+
+            if (statusInput) {
+
+              statusInput.value =
+                result.data.kode;
+
+            }
+
+
+          } catch (error) {
+
+            showAlert(
+              error.message ||
+              "Terjadi kesalahan.",
+              "error"
+            );
+
+          } finally {
+
+            setButton(
+              button,
+              false,
+              "✈ Kirim Pengaduan"
+            );
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       CEK STATUS
+    ===================================================== */
+
+    function setupStatusForm() {
+
+      const form =
+        document.getElementById(
+          "statusForm"
+        );
+
+      if (!form) {
+        return;
+      }
+
+
+      form.addEventListener(
+        "submit",
+        async event => {
+
+          event.preventDefault();
+
+
+          const kode =
+            document
+              .getElementById(
+                "kodeStatus"
+              )
+              .value
+              .trim()
+              .toUpperCase();
+
+
+          const result =
+            document.getElementById(
+              "statusResult"
+            );
+
+
+          if (!kode) {
+
+            result.innerHTML = `
+              <div class="status-box">
+                Masukkan kode pengaduan terlebih dahulu.
+              </div>
+            `;
+
+            return;
+          }
+
+
+          result.innerHTML = `
+            <div class="status-box">
+              ⏳ Memeriksa status...
+            </div>
+          `;
+
+
+          try {
+
+            const response =
+              await fetch(
+                `${API_URL}?action=checkStatus&kode=${encodeURIComponent(kode)}`
+              );
+
+
+            const data =
+              await response.json();
+
+
+            if (!data.success) {
+
+              throw new Error(
+                data.message ||
+                "Kode pengaduan tidak ditemukan."
+              );
+
+            }
+
+
+            const d =
+              data.data;
+
+
+            result.innerHTML = `
+
+              <div class="status-box">
+
+                <div class="status-head">
+
+                  <div>
+
+                    <span class="eyebrow">
+                      Kode Pengaduan
+                    </span>
+
+                    <h3>
+                      ${escapeHtml(
+                        d.kode
+                      )}
+                    </h3>
+
+                  </div>
+
+                  ${statusPill(
+                    d.status
+                  )}
+
+                </div>
+
+
+                <div class="status-info">
+
+                  <p>
+                    <strong>
+                      Nama:
+                    </strong>
+                    ${escapeHtml(
+                      d.nama
+                    )}
+                  </p>
+
+                  <p>
+                    <strong>
+                      Kategori:
+                    </strong>
+                    ${escapeHtml(
+                      d.kategori
+                    )}
+                  </p>
+
+                  <p>
+                    <strong>
+                      Judul:
+                    </strong>
+                    ${escapeHtml(
+                      d.judul
+                    )}
+                  </p>
+
+                  <p>
+                    <strong>
+                      Tanggal:
+                    </strong>
+                    ${escapeHtml(
+                      d.tanggal
+                    )}
+                  </p>
+
+                  ${
+                    d.tanggapan
+                      ? `
+                        <div class="response-box">
+
+                          <strong>
+                            Tanggapan Admin
+                          </strong>
+
+                          <p>
+                            ${escapeHtml(
+                              d.tanggapan
+                            )}
+                          </p>
+
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+            `;
+
+
+          } catch (error) {
+
+            result.innerHTML = `
+
+              <div class="status-box">
+
+                ❌
+                ${escapeHtml(
+                  error.message
+                )}
+
+              </div>
+
+            `;
+
+          }
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       POST API
+    ===================================================== */
+
+    async function postJson(
+      data
+    ) {
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+
+            method:
+              "POST",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify(
+                data
+              )
+
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Server tidak dapat dihubungi."
+        );
+
+      }
+
+
+      return response.json();
+
+    }
+
+
+    /* =====================================================
+       STATUS PILL
+    ===================================================== */
+
+    function statusPill(
+      status
+    ) {
+
+      const normalized =
+        String(status || "")
+          .toLowerCase()
+          .trim();
+
+      let className =
+        "status-baru";
+
+      if (
+        normalized === "diproses"
+      ) {
+
+        className =
+          "status-diproses";
+
+      } else if (
+        normalized === "selesai"
+      ) {
+
+        className =
+          "status-selesai";
+
+      } else if (
+        normalized === "ditolak"
+      ) {
+
+        className =
+          "status-ditolak";
+
+      }
+
+
+      return `
+
+        <span
+          class="status-pill ${className}"
+        >
+          ${escapeHtml(
+            status
+          )}
+        </span>
+
+      `;
+
+    }
+
+
+    /* =====================================================
+       BUTTON
+    ===================================================== */
+
+    function setButton(
+      button,
+      loading,
+      text
+    ) {
+
+      if (!button) {
+        return;
+      }
+
+
+      button.disabled =
+        loading;
+
+
+      button.textContent =
+        loading
+          ? "⏳ " + text
+          : text;
+
+    }
+
+
+    /* =====================================================
+       ALERT
+    ===================================================== */
+
+    function showAlert(
+      message,
+      type
+    ) {
+
+      const box =
+        document.getElementById(
+          "formAlert"
+        );
+
+
+      if (!box) {
+        return;
+      }
+
+
+      box.textContent =
+        message;
+
+
+      box.className =
+        "alert";
+
+
+      if (message) {
+
+        box.classList.add(
+          "show",
+          type
+        );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ===================================================== */
+
+    function escapeHtml(
+      value
+    ) {
+
+      return String(
+        value ?? ""
+      ).replace(
+        /[&<>"']/g,
+        character => ({
+
+          "&":
+            "&amp;",
+
+          "<":
+            "&lt;",
+
+          ">":
+            "&gt;",
+
+          '"':
+            "&quot;",
+
+          "'":
+            "&#039;"
+
+        }[character])
+      );
+
+    }
+
+  </script>
 
 </body>
 </html>

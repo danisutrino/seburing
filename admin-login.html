@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Login Admin - Desa Seburing</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple-dark: #2a1848;
+      --purple: #5b2a8c;
+      --purple-light: #8a4fc9;
+
+      --green-dark: #157a5c;
+      --green: #3fae6b;
+      --green-light: #9fdd5c;
+
+      --cream: #fbf9f5;
+      --cream-dark: #f3eee7;
+
+      --white: #ffffff;
+      --text: #292332;
+      --muted: #746d7d;
+
+      --border: #e8e1eb;
+
+      --danger: #dc3545;
+
+      --shadow: 0 25px 70px rgba(42, 24, 72, .12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", sans-serif;
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(159, 221, 92, .20),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 90%,
+          rgba(138, 79, 201, .16),
+          transparent 35%
+        ),
+        var(--cream);
+
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* =========================
+       BACKGROUND
+    ========================== */
+
+    .background-decoration {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .circle-1 {
+      width: 280px;
+      height: 280px;
+      top: -100px;
+      left: -80px;
+      background: rgba(91, 42, 140, .08);
+    }
+
+    .circle-2 {
+      width: 350px;
+      height: 350px;
+      right: -130px;
+      bottom: -120px;
+      background: rgba(63, 174, 107, .10);
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    .topbar {
+      width: 100%;
+      padding: 22px 30px;
+    }
+
+    .topbar-inner {
+      width: min(1180px, 100%);
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      color: var(--purple-dark);
+    }
+
+    .brand-icon {
+      width: 46px;
+      height: 46px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 14px;
+
+      color: white;
+      font-size: 21px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--green)
+        );
+
+      box-shadow:
+        0 10px 25px rgba(91, 42, 140, .18);
+    }
+
+    .brand-name {
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .brand-subtitle {
+      display: block;
+
+      color: var(--muted);
+
+      font-size: 10px;
+      font-weight: 600;
+
+      margin-top: 2px;
+    }
+
+    .back-home {
+      color: var(--muted);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      padding: 9px 13px;
+
+      border-radius: 9px;
+
+      transition: .2s;
+    }
+
+    .back-home:hover {
+      color: var(--purple);
+      background: rgba(91, 42, 140, .07);
+    }
+
+    /* =========================
+       MAIN
+    ========================== */
+
+    .main {
+      width: min(1180px, calc(100% - 40px));
+      min-height: calc(100vh - 100px);
+
+      margin: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 30px 0 60px;
+    }
+
+    .login-layout {
+      width: 100%;
+      max-width: 960px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+
+      background: var(--white);
+
+      border-radius: 28px;
+
+      overflow: hidden;
+
+      box-shadow: var(--shadow);
+
+      border: 1px solid rgba(232, 225, 235, .9);
+    }
+
+    /* =========================
+       LEFT PANEL
+    ========================== */
+
+    .welcome-panel {
+      position: relative;
+
+      padding: 55px 48px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          145deg,
+          var(--purple-dark),
+          var(--purple) 58%,
+          var(--green-dark)
+        );
+
+      overflow: hidden;
+    }
+
+    .welcome-panel::before {
+      content: "";
+
+      position: absolute;
+
+      width: 260px;
+      height: 260px;
+
+      border-radius: 50%;
+
+      right: -120px;
+      top: -100px;
+
+      background: rgba(255,255,255,.08);
+    }
+
+    .welcome-panel::after {
+      content: "";
+
+      position: absolute;
+
+      width: 200px;
+      height: 200px;
+
+      border-radius: 50%;
+
+      left: -110px;
+      bottom: -100px;
+
+      background: rgba(159,221,92,.12);
+    }
+
+    .welcome-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .panel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+
+      padding: 7px 11px;
+
+      border-radius: 30px;
+
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.14);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      text-transform: uppercase;
+      letter-spacing: 1px;
+
+      margin-bottom: 25px;
+    }
+
+    .welcome-panel h1 {
+      font-family: "Fraunces", serif;
+
+      font-size: clamp(32px, 4vw, 46px);
+
+      line-height: 1.08;
+
+      margin-bottom: 18px;
+    }
+
+    .welcome-panel h1 span {
+      color: var(--green-light);
+    }
+
+    .welcome-panel > .welcome-content > p {
+      color: rgba(255,255,255,.75);
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      max-width: 400px;
+    }
+
+    .feature-list {
+      margin-top: 35px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 15px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+
+      gap: 12px;
+
+      color: rgba(255,255,255,.88);
+
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .feature-icon {
+      width: 34px;
+      height: 34px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,.10);
+
+      font-size: 15px;
+    }
+
+    /* =========================
+       LOGIN PANEL
+    ========================== */
+
+    .login-panel {
+      padding: 55px 48px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-heading {
+      margin-bottom: 30px;
+    }
+
+    .login-heading small {
+      display: block;
+
+      color: var(--green-dark);
+
+      font-size: 10px;
+      font-weight: 800;
+
+      letter-spacing: 1.4px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .login-heading h2 {
+      font-family: "Fraunces", serif;
+
+      color: var(--purple-dark);
+
+      font-size: 32px;
+
+      line-height: 1.15;
+    }
+
+    .login-heading p {
+      color: var(--muted);
+
+      font-size: 12px;
+
+      margin-top: 8px;
+    }
+
+    /* =========================
+       FORM
+    ========================== */
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+
+      color: #544d5d;
+
+      font-size: 11px;
+      font-weight: 800;
+
+      margin-bottom: 7px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+
+      left: 14px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      font-size: 15px;
+
+      color: var(--muted);
+
+      pointer-events: none;
+    }
+
+    .form-control {
+      width: 100%;
+
+      min-height: 48px;
+
+      border: 1px solid var(--border);
+
+      border-radius: 11px;
+
+      padding:
+        12px
+        43px
+        12px
+        42px;
+
+      outline: none;
+
+      background: #fff;
+
+      color: var(--text);
+
+      font-size: 13px;
+
+      transition: .2s;
+    }
+
+    .form-control::placeholder {
+      color: #aaa3af;
+    }
+
+    .form-control:focus {
+      border-color: var(--purple-light);
+
+      box-shadow:
+        0 0 0 4px
+        rgba(138, 79, 201, .09);
+    }
+
+    .password-toggle {
+      position: absolute;
+
+      right: 10px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      width: 32px;
+      height: 32px;
+
+      border: 0;
+
+      background: transparent;
+
+      color: var(--muted);
+
+      border-radius: 7px;
+    }
+
+    .password-toggle:hover {
+      background: #f4eff7;
+
+      color: var(--purple);
+    }
+
+    /* =========================
+       OPTIONS
+    ========================== */
+
+    .login-options {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 10px;
+
+      margin: 5px 0 22px;
+    }
+
+    .remember {
+      display: flex;
+      align-items: center;
+
+      gap: 7px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+
+      cursor: pointer;
+    }
+
+    .remember input {
+      accent-color: var(--purple);
+
+      width: 14px;
+      height: 14px;
+    }
+
+    .forgot {
+      border: 0;
+      background: transparent;
+
+      color: var(--purple);
+
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .forgot:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       LOGIN BUTTON
+    ========================== */
+
+    .login-button {
+      width: 100%;
+
+      min-height: 50px;
+
+      border: 0;
+
+      border-radius: 11px;
+
+      color: white;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--purple),
+          var(--purple-light)
+        );
+
+      font-size: 13px;
+      font-weight: 800;
+
+      box-shadow:
+        0 10px 25px
+        rgba(91,42,140,.20);
+
+      transition: .2s;
+    }
+
+    .login-button:hover {
+      transform: translateY(-1px);
+
+      box-shadow:
+        0 13px 30px
+        rgba(91,42,140,.27);
+    }
+
+    .login-button:disabled {
+      opacity: .65;
+
+      cursor: not-allowed;
+
+      transform: none;
+    }
+
+    /* =========================
+       ERROR
+    ========================== */
+
+    .error-message {
+      display: none;
+
+      margin-bottom: 17px;
+
+      padding: 11px 13px;
+
+      border-radius: 10px;
+
+      background: #fff0f1;
+
+      border: 1px solid #ffd6da;
+
+      color: var(--danger);
+
+      font-size: 11px;
+
+      line-height: 1.5;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /* =========================
+       SECURITY INFO
+    ========================== */
+
+    .security-info {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 22px;
+
+      padding-top: 18px;
+
+      border-top: 1px solid var(--border);
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      line-height: 1.5;
+    }
+
+    .security-icon {
+      width: 27px;
+      height: 27px;
+
+      flex-shrink: 0;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 8px;
+
+      background: #eaf7ef;
+
+      color: var(--green-dark);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    .footer {
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      padding: 0 20px 25px;
+    }
+
+    /* =========================
+       LOADING
+    ========================== */
+
+    .button-loading {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .login-button.loading .button-text {
+      display: none;
+    }
+
+    .login-button.loading .button-loading {
+      display: flex;
+    }
+
+    .spinner {
+      width: 16px;
+      height: 16px;
+
+      border: 2px solid rgba(255,255,255,.4);
+
+      border-top-color: white;
+
+      border-radius: 50%;
+
+      animation: spin .7s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .topbar {
+        padding: 17px 20px;
+      }
+
+      .main {
+        width: min(100% - 24px, 600px);
+
+        min-height: auto;
+
+        padding:
+          20px
+          0
+          40px;
+      }
+
+      .login-layout {
+        grid-template-columns: 1fr;
+
+        border-radius: 22px;
+      }
+
+      .welcome-panel {
+        padding: 35px 30px;
+      }
+
+      .welcome-panel h1 {
+        font-size: 35px;
+      }
+
+      .feature-list {
+        display: grid;
+
+        grid-template-columns:
+          repeat(2, 1fr);
+
+        gap: 12px;
+
+        margin-top: 25px;
+      }
+
+      .login-panel {
+        padding: 35px 30px;
+      }
+
+    }
+
+    @media (max-width: 500px) {
+
+      .brand-subtitle {
+        display: none;
+      }
+
+      .back-home {
+        font-size: 11px;
+      }
+
+      .welcome-panel {
+        padding: 30px 23px;
+      }
+
+      .login-panel {
+        padding: 30px 23px;
+      }
+
+      .feature-list {
+        grid-template-columns: 1fr;
+      }
+
+      .login-heading h2 {
+        font-size: 28px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BACKGROUND -->
+
+  <div class="background-decoration">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+  </div>
+
+
+  <!-- HEADER -->
+
+  <header class="topbar">
+
+    <div class="topbar-inner">
+
+      <a href="index.html" class="brand">
+
+        <div class="brand-icon">
+          🏡
+        </div>
+
+        <div>
+          <div class="brand-name">
+            Desa Seburing
+          </div>
+
+          <span class="brand-subtitle">
+            Pemerintahan Desa
+          </span>
+        </div>
+
+      </a>
+
+      <a
+        href="index.html"
+        class="back-home">
+        ← Kembali ke Beranda
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="main">
+
+    <div class="login-layout">
+
+
+      <!-- =====================
+           WELCOME
+      ====================== -->
+
+      <section class="welcome-panel">
+
+        <div class="welcome-content">
+
+          <div class="panel-badge">
+            🔐 Area Terbatas
+          </div>
+
+          <h1>
+            Selamat Datang<br>
+            <span>Admin Desa</span>
+          </h1>
+
+          <p>
+            Masuk ke panel administrasi untuk
+            mengelola pengaduan dan pelayanan
+            masyarakat Desa Seburing.
+          </p>
+
+
+          <div class="feature-list">
+
+            <div class="feature">
+
+              <div class="feature-icon">
+                📋
+              </div>
+
+              <span>
+                Kelola pengaduan masyarakat
+              </span>
+
+            </div>
+
+
+            <div class="feature">
+
+              <div class="feature-icon">
+                📊
+              </div>
+
+              <span>
+                Pantau statistik pengaduan
+              </span>
+
+            </div>
+
+
+            <div class="feature">
+
+              <div class="feature-icon">
+                💬
+              </div>
+
+              <span>
+                Berikan tanggapan
+              </span>
+
+            </div>
+
+
+            <div class="feature">
+
+              <div class="feature-icon">
+                🔄
+              </div>
+
+              <span>
+                Perbarui status laporan
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================
+           LOGIN
+      ====================== -->
+
+      <section class="login-panel">
+
+        <div class="login-heading">
+
+          <small>
+            Panel Administrasi
+          </small>
+
+          <h2>
+            Login Admin
+          </h2>
+
+          <p>
+            Masukkan akun administrator Anda
+            untuk melanjutkan.
+          </p>
+
+        </div>
+
+
+        <!-- ERROR -->
+
+        <div
+          class="error-message"
+          id="errorMessage">
+        </div>
+
+
+        <!-- FORM -->
+
+        <form
+          id="loginForm"
+          autocomplete="on">
+
+
+          <!-- USERNAME -->
+
+          <div class="form-group">
+
+            <label for="username">
+              Username
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                👤
+              </span>
+
+              <input
+                type="text"
+                id="username"
+                name="username"
+                class="form-control"
+                placeholder="Masukkan username"
+                autocomplete="username"
+                required>
+
+            </div>
+
+          </div>
+
+
+          <!-- PASSWORD -->
+
+          <div class="form-group">
+
+            <label for="password">
+              Password
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="input-icon">
+                🔒
+              </span>
+
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                placeholder="Masukkan password"
+                autocomplete="current-password"
+                required>
+
+              <button
+                type="button"
+                class="password-toggle"
+                id="passwordToggle"
+                aria-label="Tampilkan password">
+                👁
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- OPTIONS -->
+
+          <div class="login-options">
+
+            <label class="remember">
+
+              <input
+                type="checkbox"
+                id="remember">
+
+              <span>
+                Ingat saya
+              </span>
+
+            </label>
+
+            <button
+              type="button"
+              class="forgot"
+              id="forgotButton">
+              Lupa password?
+            </button>
+
+          </div>
+
+
+          <!-- LOGIN -->
+
+          <button
+            type="submit"
+            class="login-button"
+            id="loginButton">
+
+            <span class="button-text">
+              Masuk ke Dashboard →
+            </span>
+
+            <span class="button-loading">
+              <span class="spinner"></span>
+              Memeriksa akun...
+            </span>
+
+          </button>
+
+        </form>
+
+
+        <!-- SECURITY -->
+
+        <div class="security-info">
+
+          <div class="security-icon">
+            🔒
+          </div>
+
+          <span>
+            Halaman ini khusus untuk administrator
+            Desa Seburing. Jangan membagikan
+            username dan password kepada pihak lain.
+          </span>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    © <span id="year"></span>
+    Pemerintah Desa Seburing.
+    Semua hak dilindungi.
+
+  </footer>
+
+
+  <script>
+    /* =====================================================
+       KONFIGURASI
+    ===================================================== */
+
+    const API_URL =
+      "https://script.google.com/macros/s/AKfycbyyO-7rDVCGAe1eK1dT38IYZ7v0xkyFf-keURw77UYiTInyNNSq6HL-UA06gXPdn8LJ/exec";
+
+
+    /*
+      MODE LOGIN
+
+      "APPS_SCRIPT"
+      = login diverifikasi oleh Google Apps Script
+
+      "LOCAL"
+      = login menggunakan username/password
+        yang ditulis di bawah.
+
+      Untuk website yang benar-benar dipakai,
+      gunakan APPS_SCRIPT.
+    */
+
+    const LOGIN_MODE = "APPS_SCRIPT";
+
+
+    /*
+      HANYA DIGUNAKAN JIKA LOGIN_MODE = "LOCAL"
+
+      Jangan gunakan password asli di sini
+      untuk website publik.
+    */
+
+    const LOCAL_USERNAME = "admin";
+    const LOCAL_PASSWORD = "admin123";
+
+
+    /* =====================================================
+       ELEMENT
+    ===================================================== */
+
+    const loginForm =
+      document.getElementById(
+        "loginForm"
+      );
+
+    const usernameInput =
+      document.getElementById(
+        "username"
+      );
+
+    const passwordInput =
+      document.getElementById(
+        "password"
+      );
+
+    const passwordToggle =
+      document.getElementById(
+        "passwordToggle"
+      );
+
+    const loginButton =
+      document.getElementById(
+        "loginButton"
+      );
+
+    const errorMessage =
+      document.getElementById(
+        "errorMessage"
+      );
+
+
+    /* =====================================================
+       INITIALIZE
+    ===================================================== */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
+
+        document.getElementById(
+          "year"
+        ).textContent =
+          new Date().getFullYear();
+
+
+        /*
+          Jika sebelumnya sudah login,
+          langsung arahkan ke admin.html.
+        */
+
+        const savedSession =
+          localStorage.getItem(
+            "desaSeburingAdmin"
+          );
+
+
+        if (savedSession) {
+
+          try {
+
+            const session =
+              JSON.parse(
+                savedSession
+              );
+
+
+            if (
+              session &&
+              session.loggedIn === true
+            ) {
+
+              window.location.href =
+                "admin.html";
+
+            }
+
+          } catch (error) {
+
+            localStorage.removeItem(
+              "desaSeburingAdmin"
+            );
+
+          }
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       SHOW / HIDE PASSWORD
+    ===================================================== */
+
+    passwordToggle.addEventListener(
+      "click",
+      () => {
+
+        const isPassword =
+          passwordInput.type ===
+          "password";
+
+
+        passwordInput.type =
+          isPassword
+            ? "text"
+            : "password";
+
+
+        passwordToggle.textContent =
+          isPassword
+            ? "🙈"
+            : "👁";
+
+      }
+    );
+
+
+    /* =====================================================
+       LOGIN
+    ===================================================== */
+
+    loginForm.addEventListener(
+      "submit",
+      async event => {
+
+        event.preventDefault();
+
+
+        hideError();
+
+
+        const username =
+          usernameInput.value.trim();
+
+        const password =
+          passwordInput.value;
+
+
+        if (!username) {
+
+          showError(
+            "Username wajib diisi."
+          );
+
+          usernameInput.focus();
+
+          return;
+
+        }
+
+
+        if (!password) {
+
+          showError(
+            "Password wajib diisi."
+          );
+
+          passwordInput.focus();
+
+          return;
+
+        }
+
+
+        setLoginLoading(true);
+
+
+        try {
+
+          let result;
+
+
+          /*
+            ================================================
+            LOGIN LOCAL
+            ================================================
+          */
+
+          if (
+            LOGIN_MODE ===
+            "LOCAL"
+          ) {
+
+            /*
+              Simulasi pemeriksaan login.
+            */
+
+            await delay(600);
+
+
+            if (
+              username ===
+                LOCAL_USERNAME &&
+              password ===
+                LOCAL_PASSWORD
+            ) {
+
+              result = {
+                success: true,
+                data: {
+                  username: username
+                }
+              };
+
+            } else {
+
+              result = {
+                success: false,
+                message:
+                  "Username atau password salah."
+              };
+
+            }
+
+          }
+
+
+          /*
+            ================================================
+            LOGIN GOOGLE APPS SCRIPT
+            ================================================
+          */
+
+          else {
+
+            result =
+              await loginWithAppsScript(
+                username,
+                password
+              );
+
+          }
+
+
+          if (
+            !result ||
+            result.success !== true
+          ) {
+
+            throw new Error(
+              result?.message ||
+              "Username atau password salah."
+            );
+
+          }
+
+
+          /*
+            Simpan session sederhana
+            di browser.
+          */
+
+          const session = {
+
+            loggedIn: true,
+
+            username:
+              result.data?.username ||
+              username,
+
+            loginTime:
+              new Date().toISOString()
+
+          };
+
+
+          localStorage.setItem(
+            "desaSeburingAdmin",
+            JSON.stringify(session)
+          );
+
+
+          /*
+            Beri sedikit waktu agar
+            user melihat proses berhasil.
+          */
+
+          await delay(300);
+
+
+          window.location.href =
+            "admin.html";
+
+
+        } catch (error) {
+
+          console.error(error);
+
+
+          showError(
+            error.message ||
+            "Login gagal. Silakan coba lagi."
+          );
+
+
+        } finally {
+
+          setLoginLoading(false);
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       LOGIN APPS SCRIPT
+    ===================================================== */
+
+    async function loginWithAppsScript(
+      username,
+      password
+    ) {
+
+      /*
+        Apps Script diharapkan menerima:
+
+        {
+          action: "adminLogin",
+          username: "...",
+          password: "..."
+        }
+
+        dan mengembalikan:
+
+        {
+          success: true,
+          data: {
+            username: "admin"
+          }
+        }
+
+        atau:
+
+        {
+          success: false,
+          message: "Username atau password salah."
+        }
+      */
+
+
+      const response =
+        await fetch(
+          API_URL,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "text/plain;charset=utf-8"
+            },
+
+            body:
+              JSON.stringify({
+
+                action:
+                  "adminLogin",
+
+                username:
+                  username,
+
+                password:
+                  password
+
+              })
+
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          "Server login tidak dapat dihubungi."
+        );
+
+      }
+
+
+      return await response.json();
+
+    }
+
+
+    /* =====================================================
+       FORGOT PASSWORD
+    ===================================================== */
+
+    document
+      .getElementById(
+        "forgotButton"
+      )
+      .addEventListener(
+        "click",
+        () => {
+
+          showError(
+            "Untuk keamanan, silakan hubungi administrator utama Desa Seburing untuk melakukan reset password."
+          );
+
+        }
+      );
+
+
+    /* =====================================================
+       ERROR
+    ===================================================== */
+
+    function showError(message) {
+
+      errorMessage.textContent =
+        message;
+
+      errorMessage.classList.add(
+        "show"
+      );
+
+    }
+
+
+    function hideError() {
+
+      errorMessage.textContent =
+        "";
+
+      errorMessage.classList.remove(
+        "show"
+      );
+
+    }
+
+
+    /* =====================================================
+       BUTTON LOADING
+    ===================================================== */
+
+    function setLoginLoading(
+      loading
+    ) {
+
+      if (loading) {
+
+        loginButton.classList.add(
+          "loading"
+        );
+
+        loginButton.disabled =
+          true;
+
+        usernameInput.disabled =
+          true;
+
+        passwordInput.disabled =
+          true;
+
+      } else {
+
+        loginButton.classList.remove(
+          "loading"
+        );
+
+        loginButton.disabled =
+          false;
+
+        usernameInput.disabled =
+          false;
+
+        passwordInput.disabled =
+          false;
+
+      }
+
+    }
+
+
+    /* =====================================================
+       DELAY
+    ===================================================== */
+
+    function delay(ms) {
+
+      return new Promise(
+        resolve =>
+          setTimeout(
+            resolve,
+            ms
+          )
+      );
+
+    }
+  </script>
+
+</body>
+</html>

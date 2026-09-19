@@ -286,27 +286,34 @@
 </head>
 <body>
 
-<div class="navbar">
-  <div class="wrap navbar-inner">
-    <a href="index.html" class="brand-link">
-      <span class="brand-dot"></span>
-      <span>Desa Seburing</span>
+<nav>
+  <div class="wrap">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <span class="dot"></span>Desa Seburing
     </a>
-    <nav class="nav-menu">
-      <a href="tentang.html">Tentang</a>
-      <a href="sejarah.html">Sejarah</a>
-      <a href="ekonomi.html">Ekonomi</a>
-      <a href="galeri.html">Galeri</a>
-      <a href="potensi_desa.html">Potensi</a>
-      <a href="pendidikan.html">Pendidikan</a>
-      <a href="wilayah.html">Wilayah</a>
-      <a href="lokasi.html">Lokasi</a>
-      <a href="kontak.html" class="current">Kontak</a>
-      <a href="pengaduan.html" class="btn-pengaduan">📢 Pengaduan</a>
-      <a href="https://script.google.com/macros/s/AKfycbxZRsmdBGtAiiwbSvkbm08UXNINqn6Yt2DkpvKfpXJNkoQtV1AO30gWAItqlXKc55J3CA/exec?page=admin" target="_blank" class="btn-admin">🔐 Admin</a>
-    </nav>
+
+    <button
+      class="nav-toggle"
+      aria-label="Buka menu"
+      onclick="document.getElementById('navlinks').classList.toggle('open')">
+      ☰
+    </button>
+
+    <ul id="navlinks">
+      <li><a href="tentang.html" class="active">Tentang</a></li>
+      <li><a href="sejarah.html">Sejarah</a></li>
+      <li><a href="ekonomi.html">Ekonomi</a></li>
+      <li><a href="galeri.html">Galeri</a></li>
+      <li><a href="potensi_desa.html">Potensi</a></li>
+      <li><a href="pendidikan.html">Pendidikan</a></li>
+      <li><a href="wilayah.html">Wilayah</a></li>
+      <li><a href="lokasi.html">Lokasi</a></li>
+      <li><a href="kontak.html">Kontak</a></li>
+      <li><a href="pengaduan.html">Pengaduan</a></li>
+      <li><a href="admin-login.html">Admin</a></li>
+    </ul>
   </div>
-</div>
+</nav>
 
 <div class="wrap hero">
   <div class="eyebrow">Hubungi Kami</div>
