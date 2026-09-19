@@ -8,9 +8,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <style>
+
     :root {
       --purple-dark: #2a1848;
       --purple: #5b2a8c;
@@ -34,19 +38,23 @@
       --shadow: 0 25px 70px rgba(42, 24, 72, .12);
     }
 
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+
     html,
     body {
       min-height: 100%;
     }
 
+
     body {
       font-family: "Plus Jakarta Sans", sans-serif;
+
       background:
         radial-gradient(
           circle at 10% 10%,
@@ -64,161 +72,257 @@
       min-height: 100vh;
     }
 
+
     button,
     input {
       font-family: inherit;
     }
 
+
     button {
       cursor: pointer;
     }
+
 
     a {
       text-decoration: none;
       color: inherit;
     }
 
-    /* =========================
-       BACKGROUND
-    ========================== */
 
-    .background-decoration {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: -1;
-    }
+    /* =====================================================
+       NAVBAR
+    ===================================================== */
 
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(1px);
-    }
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
 
-    .circle-1 {
-      width: 280px;
-      height: 280px;
-      top: -100px;
-      left: -80px;
-      background: rgba(91, 42, 140, .08);
-    }
-
-    .circle-2 {
-      width: 350px;
-      height: 350px;
-      right: -130px;
-      bottom: -120px;
-      background: rgba(63, 174, 107, .10);
-    }
-
-    /* =========================
-       HEADER
-    ========================== */
-
-    .topbar {
       width: 100%;
-      padding: 22px 30px;
+
+      background: rgba(251, 249, 245, .94);
+
+      backdrop-filter: blur(15px);
+
+      border-bottom:
+        1px solid
+        rgba(42, 24, 72, .08);
     }
 
-    .topbar-inner {
-      width: min(1180px, 100%);
+
+    .nav-container {
+      width: min(1180px, 92%);
+      height: 76px;
+
       margin: auto;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 20px;
     }
 
-    .brand {
+
+    .nav-container .brand {
       display: flex;
       align-items: center;
+
       gap: 12px;
+
+      font-family: "Fraunces", serif;
+
+      font-weight: 700;
+      font-size: 22px;
 
       color: var(--purple-dark);
     }
 
-    .brand-icon {
-      width: 46px;
-      height: 46px;
+
+    .nav-container .brand-icon {
+      width: 42px;
+      height: 42px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 14px;
+      border-radius: 12px;
 
       color: white;
-      font-size: 21px;
 
       background:
         linear-gradient(
           135deg,
           var(--purple),
-          var(--green)
+          var(--green-dark)
         );
 
-      box-shadow:
-        0 10px 25px rgba(91, 42, 140, .18);
+      font-size: 19px;
     }
 
-    .brand-name {
-      font-weight: 800;
-      font-size: 15px;
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: 22px;
+
+      flex-wrap: wrap;
     }
 
-    .brand-subtitle {
-      display: block;
 
-      color: var(--muted);
-
-      font-size: 10px;
-      font-weight: 600;
-
-      margin-top: 2px;
-    }
-
-    .back-home {
-      color: var(--muted);
-
-      font-size: 12px;
+    .nav-links a {
+      font-size: 13px;
       font-weight: 700;
 
-      padding: 9px 13px;
+      color: #484848;
 
-      border-radius: 9px;
-
-      transition: .2s;
+      transition: .25s;
     }
 
-    .back-home:hover {
+
+    .nav-links a:hover,
+    .nav-links a.active {
       color: var(--purple);
-      background: rgba(91, 42, 140, .07);
     }
 
-    /* =========================
+
+    .nav-toggle {
+      display: none;
+
+      border: 0;
+      background: transparent;
+
+      font-size: 26px;
+
+      color: var(--purple-dark);
+    }
+
+
+    @media (max-width: 900px) {
+
+      .nav-toggle {
+        display: block;
+      }
+
+
+      .nav-links {
+        display: none;
+
+        position: absolute;
+
+        left: 4%;
+        right: 4%;
+        top: 70px;
+
+        padding: 18px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        background: white;
+
+        border-radius: 16px;
+
+        box-shadow: var(--shadow);
+
+        border:
+          1px solid
+          rgba(42, 24, 72, .08);
+      }
+
+
+      .nav-links.open {
+        display: flex;
+      }
+
+    }
+
+
+    /* =====================================================
+       BACKGROUND
+    ===================================================== */
+
+    .background-decoration {
+      position: fixed;
+
+      inset: 0;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+      z-index: -1;
+    }
+
+
+    .circle {
+      position: absolute;
+
+      border-radius: 50%;
+
+      filter: blur(1px);
+    }
+
+
+    .circle-1 {
+      width: 280px;
+      height: 280px;
+
+      top: -100px;
+      left: -80px;
+
+      background:
+        rgba(91, 42, 140, .08);
+    }
+
+
+    .circle-2 {
+      width: 350px;
+      height: 350px;
+
+      right: -130px;
+      bottom: -120px;
+
+      background:
+        rgba(63, 174, 107, .10);
+    }
+
+
+    /* =====================================================
        MAIN
-    ========================== */
+    ===================================================== */
 
     .main {
       width: min(1180px, calc(100% - 40px));
-      min-height: calc(100vh - 100px);
+
+      min-height:
+        calc(100vh - 100px);
 
       margin: auto;
 
       display: flex;
+
       align-items: center;
+
       justify-content: center;
 
       padding: 30px 0 60px;
     }
+
 
     .login-layout {
       width: 100%;
       max-width: 960px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
+
+      grid-template-columns:
+        1fr 1fr;
 
       background: var(--white);
 
@@ -228,12 +332,15 @@
 
       box-shadow: var(--shadow);
 
-      border: 1px solid rgba(232, 225, 235, .9);
+      border:
+        1px solid
+        rgba(232, 225, 235, .9);
     }
 
-    /* =========================
+
+    /* =====================================================
        LEFT PANEL
-    ========================== */
+    ===================================================== */
 
     .welcome-panel {
       position: relative;
@@ -253,6 +360,7 @@
       overflow: hidden;
     }
 
+
     .welcome-panel::before {
       content: "";
 
@@ -266,8 +374,10 @@
       right: -120px;
       top: -100px;
 
-      background: rgba(255,255,255,.08);
+      background:
+        rgba(255,255,255,.08);
     }
+
 
     .welcome-panel::after {
       content: "";
@@ -282,51 +392,71 @@
       left: -110px;
       bottom: -100px;
 
-      background: rgba(159,221,92,.12);
+      background:
+        rgba(159,221,92,.12);
     }
+
 
     .welcome-content {
       position: relative;
+
       z-index: 2;
     }
 
+
     .panel-badge {
       display: inline-flex;
+
       align-items: center;
+
       gap: 7px;
 
       padding: 7px 11px;
 
       border-radius: 30px;
 
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.14);
+      background:
+        rgba(255,255,255,.12);
+
+      border:
+        1px solid
+        rgba(255,255,255,.14);
 
       font-size: 10px;
+
       font-weight: 800;
 
       text-transform: uppercase;
+
       letter-spacing: 1px;
 
       margin-bottom: 25px;
     }
 
+
     .welcome-panel h1 {
       font-family: "Fraunces", serif;
 
-      font-size: clamp(32px, 4vw, 46px);
+      font-size:
+        clamp(32px, 4vw, 46px);
 
       line-height: 1.08;
 
       margin-bottom: 18px;
     }
 
+
     .welcome-panel h1 span {
       color: var(--green-light);
     }
 
-    .welcome-panel > .welcome-content > p {
-      color: rgba(255,255,255,.75);
+
+    .welcome-panel
+    > .welcome-content
+    > p {
+
+      color:
+        rgba(255,255,255,.75);
 
       font-size: 13px;
 
@@ -335,26 +465,33 @@
       max-width: 400px;
     }
 
+
     .feature-list {
       margin-top: 35px;
 
       display: flex;
+
       flex-direction: column;
 
       gap: 15px;
     }
 
+
     .feature {
       display: flex;
+
       align-items: center;
 
       gap: 12px;
 
-      color: rgba(255,255,255,.88);
+      color:
+        rgba(255,255,255,.88);
 
       font-size: 12px;
+
       font-weight: 600;
     }
+
 
     .feature-icon {
       width: 34px;
@@ -363,30 +500,37 @@
       flex-shrink: 0;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 10px;
 
-      background: rgba(255,255,255,.10);
+      background:
+        rgba(255,255,255,.10);
 
       font-size: 15px;
     }
 
-    /* =========================
+
+    /* =====================================================
        LOGIN PANEL
-    ========================== */
+    ===================================================== */
 
     .login-panel {
       padding: 55px 48px;
 
       display: flex;
+
       flex-direction: column;
+
       justify-content: center;
     }
+
 
     .login-heading {
       margin-bottom: 30px;
     }
+
 
     .login-heading small {
       display: block;
@@ -394,6 +538,7 @@
       color: var(--green-dark);
 
       font-size: 10px;
+
       font-weight: 800;
 
       letter-spacing: 1.4px;
@@ -402,6 +547,7 @@
 
       margin-bottom: 8px;
     }
+
 
     .login-heading h2 {
       font-family: "Fraunces", serif;
@@ -413,6 +559,7 @@
       line-height: 1.15;
     }
 
+
     .login-heading p {
       color: var(--muted);
 
@@ -421,13 +568,15 @@
       margin-top: 8px;
     }
 
-    /* =========================
+
+    /* =====================================================
        FORM
-    ========================== */
+    ===================================================== */
 
     .form-group {
       margin-bottom: 18px;
     }
+
 
     .form-group label {
       display: block;
@@ -435,14 +584,17 @@
       color: #544d5d;
 
       font-size: 11px;
+
       font-weight: 800;
 
       margin-bottom: 7px;
     }
 
+
     .input-wrapper {
       position: relative;
     }
+
 
     .input-icon {
       position: absolute;
@@ -450,7 +602,8 @@
       left: 14px;
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       font-size: 15px;
 
@@ -459,12 +612,15 @@
       pointer-events: none;
     }
 
+
     .form-control {
       width: 100%;
 
       min-height: 48px;
 
-      border: 1px solid var(--border);
+      border:
+        1px solid
+        var(--border);
 
       border-radius: 11px;
 
@@ -485,17 +641,21 @@
       transition: .2s;
     }
 
+
     .form-control::placeholder {
       color: #aaa3af;
     }
 
+
     .form-control:focus {
-      border-color: var(--purple-light);
+      border-color:
+        var(--purple-light);
 
       box-shadow:
         0 0 0 4px
         rgba(138, 79, 201, .09);
     }
+
 
     .password-toggle {
       position: absolute;
@@ -503,7 +663,8 @@
       right: 10px;
       top: 50%;
 
-      transform: translateY(-50%);
+      transform:
+        translateY(-50%);
 
       width: 32px;
       height: 32px;
@@ -517,19 +678,23 @@
       border-radius: 7px;
     }
 
+
     .password-toggle:hover {
       background: #f4eff7;
 
       color: var(--purple);
     }
 
-    /* =========================
+
+    /* =====================================================
        OPTIONS
-    ========================== */
+    ===================================================== */
 
     .login-options {
       display: flex;
+
       align-items: center;
+
       justify-content: space-between;
 
       gap: 10px;
@@ -537,8 +702,10 @@
       margin: 5px 0 22px;
     }
 
+
     .remember {
       display: flex;
+
       align-items: center;
 
       gap: 7px;
@@ -550,30 +717,37 @@
       cursor: pointer;
     }
 
+
     .remember input {
-      accent-color: var(--purple);
+      accent-color:
+        var(--purple);
 
       width: 14px;
       height: 14px;
     }
 
+
     .forgot {
       border: 0;
+
       background: transparent;
 
       color: var(--purple);
 
       font-size: 11px;
+
       font-weight: 700;
     }
+
 
     .forgot:hover {
       text-decoration: underline;
     }
 
-    /* =========================
+
+    /* =====================================================
        LOGIN BUTTON
-    ========================== */
+    ===================================================== */
 
     .login-button {
       width: 100%;
@@ -594,6 +768,7 @@
         );
 
       font-size: 13px;
+
       font-weight: 800;
 
       box-shadow:
@@ -603,13 +778,16 @@
       transition: .2s;
     }
 
+
     .login-button:hover {
-      transform: translateY(-1px);
+      transform:
+        translateY(-1px);
 
       box-shadow:
         0 13px 30px
         rgba(91,42,140,.27);
     }
+
 
     .login-button:disabled {
       opacity: .65;
@@ -619,9 +797,10 @@
       transform: none;
     }
 
-    /* =========================
+
+    /* =====================================================
        ERROR
-    ========================== */
+    ===================================================== */
 
     .error-message {
       display: none;
@@ -634,7 +813,9 @@
 
       background: #fff0f1;
 
-      border: 1px solid #ffd6da;
+      border:
+        1px solid
+        #ffd6da;
 
       color: var(--danger);
 
@@ -643,16 +824,19 @@
       line-height: 1.5;
     }
 
+
     .error-message.show {
       display: block;
     }
 
-    /* =========================
+
+    /* =====================================================
        SECURITY INFO
-    ========================== */
+    ===================================================== */
 
     .security-info {
       display: flex;
+
       align-items: center;
 
       gap: 8px;
@@ -661,7 +845,9 @@
 
       padding-top: 18px;
 
-      border-top: 1px solid var(--border);
+      border-top:
+        1px solid
+        var(--border);
 
       color: var(--muted);
 
@@ -670,6 +856,7 @@
       line-height: 1.5;
     }
 
+
     .security-icon {
       width: 27px;
       height: 27px;
@@ -677,6 +864,7 @@
       flex-shrink: 0;
 
       display: grid;
+
       place-items: center;
 
       border-radius: 8px;
@@ -686,9 +874,10 @@
       color: var(--green-dark);
     }
 
-    /* =========================
+
+    /* =====================================================
        FOOTER
-    ========================== */
+    ===================================================== */
 
     .footer {
       text-align: center;
@@ -697,67 +886,81 @@
 
       font-size: 10px;
 
-      padding: 0 20px 25px;
+      padding:
+        0 20px 25px;
     }
 
-    /* =========================
+
+    /* =====================================================
        LOADING
-    ========================== */
+    ===================================================== */
 
     .button-loading {
       display: none;
+
       align-items: center;
+
       justify-content: center;
+
       gap: 8px;
     }
 
-    .login-button.loading .button-text {
+
+    .login-button.loading
+    .button-text {
       display: none;
     }
 
-    .login-button.loading .button-loading {
+
+    .login-button.loading
+    .button-loading {
       display: flex;
     }
+
 
     .spinner {
       width: 16px;
       height: 16px;
 
-      border: 2px solid rgba(255,255,255,.4);
+      border:
+        2px solid
+        rgba(255,255,255,.4);
 
       border-top-color: white;
 
       border-radius: 50%;
 
-      animation: spin .7s linear infinite;
+      animation:
+        spin .7s linear infinite;
     }
+
 
     @keyframes spin {
+
       to {
-        transform: rotate(360deg);
+        transform:
+          rotate(360deg);
       }
+
     }
 
-    /* =========================
+
+    /* =====================================================
        RESPONSIVE
-    ========================== */
+    ===================================================== */
 
     @media (max-width: 800px) {
 
-      .topbar {
-        padding: 17px 20px;
-      }
-
       .main {
-        width: min(100% - 24px, 600px);
+        width:
+          min(100% - 24px, 600px);
 
         min-height: auto;
 
         padding:
-          20px
-          0
-          40px;
+          20px 0 40px;
       }
+
 
       .login-layout {
         grid-template-columns: 1fr;
@@ -765,13 +968,17 @@
         border-radius: 22px;
       }
 
+
       .welcome-panel {
-        padding: 35px 30px;
+        padding:
+          35px 30px;
       }
+
 
       .welcome-panel h1 {
         font-size: 35px;
       }
+
 
       .feature-list {
         display: grid;
@@ -784,119 +991,219 @@
         margin-top: 25px;
       }
 
+
       .login-panel {
-        padding: 35px 30px;
+        padding:
+          35px 30px;
       }
 
     }
 
+
     @media (max-width: 500px) {
 
-      .brand-subtitle {
-        display: none;
+      .nav-container {
+        height: 70px;
       }
 
-      .back-home {
-        font-size: 11px;
+
+      .nav-container .brand {
+        font-size: 19px;
       }
+
+
+      .nav-container .brand-icon {
+        width: 38px;
+        height: 38px;
+      }
+
 
       .welcome-panel {
-        padding: 30px 23px;
+        padding:
+          30px 23px;
       }
 
+
       .login-panel {
-        padding: 30px 23px;
+        padding:
+          30px 23px;
       }
+
 
       .feature-list {
         grid-template-columns: 1fr;
       }
+
 
       .login-heading h2 {
         font-size: 28px;
       }
 
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- BACKGROUND -->
 
-  <div class="background-decoration">
-    <div class="circle circle-1"></div>
-    <div class="circle circle-2"></div>
-  </div>
+  <!-- =====================================================
+       NAVBAR
+  ===================================================== -->
 
+  <header class="navbar">
 
-  <!-- HEADER -->
-
-  <header class="topbar">
-
-    <div class="topbar-inner">
-
-      <a href="index.html" class="brand">
-
-        <div class="brand-icon">
-          🏡
-        </div>
-
-        <div>
-          <div class="brand-name">
-            Desa Seburing
-          </div>
-
-          <span class="brand-subtitle">
-            Pemerintahan Desa
-          </span>
-        </div>
-
-      </a>
+    <div class="nav-container">
 
       <a
         href="index.html"
-        class="back-home">
-        ← Kembali ke Beranda
+        class="brand">
+
+        <span class="brand-icon">
+          ✦
+        </span>
+
+        <span>
+          Desa Seburing
+        </span>
+
       </a>
+
+
+      <button
+        class="nav-toggle"
+        id="navToggle"
+        aria-label="Buka menu"
+        type="button">
+
+        ☰
+
+      </button>
+
+
+      <nav
+        class="nav-links"
+        id="navlinks">
+
+        <a href="index.html">
+          Beranda
+        </a>
+
+        <a href="tentang.html">
+          Tentang
+        </a>
+
+        <a href="sejarah.html">
+          Sejarah
+        </a>
+
+        <a href="ekonomi.html">
+          Ekonomi
+        </a>
+
+        <a href="galeri.html">
+          Galeri
+        </a>
+
+        <a href="potensi_desa.html">
+          Potensi
+        </a>
+
+        <a href="pendidikan.html">
+          Pendidikan
+        </a>
+
+        <a href="wilayah.html">
+          Wilayah
+        </a>
+
+        <a href="lokasi.html">
+          Lokasi
+        </a>
+
+        <a href="kontak.html">
+          Kontak
+        </a>
+
+        <a href="pengaduan.html">
+          Pengaduan
+        </a>
+
+        <a
+          href="admin-login.html"
+          class="active">
+
+          Admin
+
+        </a>
+
+      </nav>
 
     </div>
 
   </header>
 
 
-  <!-- MAIN -->
+  <!-- =====================================================
+       BACKGROUND
+  ===================================================== -->
+
+  <div class="background-decoration">
+
+    <div class="circle circle-1"></div>
+
+    <div class="circle circle-2"></div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MAIN
+  ===================================================== -->
 
   <main class="main">
 
     <div class="login-layout">
 
 
-      <!-- =====================
+      <!-- =================================================
            WELCOME
-      ====================== -->
+      ================================================== -->
 
       <section class="welcome-panel">
 
         <div class="welcome-content">
 
           <div class="panel-badge">
+
             🔐 Area Terbatas
+
           </div>
 
+
           <h1>
+
             Selamat Datang<br>
-            <span>Admin Desa</span>
+
+            <span>
+              Admin Desa
+            </span>
+
           </h1>
 
+
           <p>
+
             Masuk ke panel administrasi untuk
             mengelola pengaduan dan pelayanan
             masyarakat Desa Seburing.
+
           </p>
 
 
           <div class="feature-list">
+
 
             <div class="feature">
 
@@ -949,6 +1256,7 @@
 
             </div>
 
+
           </div>
 
         </div>
@@ -956,11 +1264,12 @@
       </section>
 
 
-      <!-- =====================
+      <!-- =================================================
            LOGIN
-      ====================== -->
+      ================================================== -->
 
       <section class="login-panel">
+
 
         <div class="login-heading">
 
@@ -968,9 +1277,11 @@
             Panel Administrasi
           </small>
 
+
           <h2>
             Login Admin
           </h2>
+
 
           <p>
             Masukkan akun administrator Anda
@@ -1003,11 +1314,13 @@
               Username
             </label>
 
+
             <div class="input-wrapper">
 
               <span class="input-icon">
                 👤
               </span>
+
 
               <input
                 type="text"
@@ -1031,11 +1344,13 @@
               Password
             </label>
 
+
             <div class="input-wrapper">
 
               <span class="input-icon">
                 🔒
               </span>
+
 
               <input
                 type="password"
@@ -1046,12 +1361,15 @@
                 autocomplete="current-password"
                 required>
 
+
               <button
                 type="button"
                 class="password-toggle"
                 id="passwordToggle"
                 aria-label="Tampilkan password">
+
                 👁
+
               </button>
 
             </div>
@@ -1062,6 +1380,7 @@
           <!-- OPTIONS -->
 
           <div class="login-options">
+
 
             <label class="remember">
 
@@ -1075,33 +1394,45 @@
 
             </label>
 
+
             <button
               type="button"
               class="forgot"
               id="forgotButton">
+
               Lupa password?
+
             </button>
 
           </div>
 
 
-          <!-- LOGIN -->
+          <!-- LOGIN BUTTON -->
 
           <button
             type="submit"
             class="login-button"
             id="loginButton">
 
+
             <span class="button-text">
+
               Masuk ke Dashboard →
+
             </span>
+
 
             <span class="button-loading">
+
               <span class="spinner"></span>
+
               Memeriksa akun...
+
             </span>
 
+
           </button>
+
 
         </form>
 
@@ -1110,17 +1441,25 @@
 
         <div class="security-info">
 
+
           <div class="security-icon">
+
             🔒
+
           </div>
 
+
           <span>
+
             Halaman ini khusus untuk administrator
             Desa Seburing. Jangan membagikan
             username dan password kepada pihak lain.
+
           </span>
 
+
         </div>
+
 
       </section>
 
@@ -1129,18 +1468,28 @@
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- =====================================================
+       FOOTER
+  ===================================================== -->
 
   <footer class="footer">
 
-    © <span id="year"></span>
+    ©
+    <span id="year"></span>
+
     Pemerintah Desa Seburing.
     Semua hak dilindungi.
 
   </footer>
 
 
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
   <script>
+
+
     /* =====================================================
        KONFIGURASI
     ===================================================== */
@@ -1158,27 +1507,53 @@
       "LOCAL"
       = login menggunakan username/password
         yang ditulis di bawah.
-
-      Untuk website yang benar-benar dipakai,
-      gunakan APPS_SCRIPT.
     */
 
-    const LOGIN_MODE = "APPS_SCRIPT";
+    const LOGIN_MODE =
+      "APPS_SCRIPT";
 
 
     /*
       HANYA DIGUNAKAN JIKA LOGIN_MODE = "LOCAL"
-
-      Jangan gunakan password asli di sini
-      untuk website publik.
     */
 
-    const LOCAL_USERNAME = "admin";
-    const LOCAL_PASSWORD = "admin123";
+    const LOCAL_USERNAME =
+      "admin";
+
+    const LOCAL_PASSWORD =
+      "admin123";
 
 
     /* =====================================================
-       ELEMENT
+       NAVBAR MOBILE TOGGLE
+    ===================================================== */
+
+    const navToggle =
+      document.getElementById(
+        "navToggle"
+      );
+
+
+    const navLinks =
+      document.getElementById(
+        "navlinks"
+      );
+
+
+    navToggle.addEventListener(
+      "click",
+      function () {
+
+        navLinks.classList.toggle(
+          "open"
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       ELEMENT LOGIN
     ===================================================== */
 
     const loginForm =
@@ -1186,25 +1561,30 @@
         "loginForm"
       );
 
+
     const usernameInput =
       document.getElementById(
         "username"
       );
+
 
     const passwordInput =
       document.getElementById(
         "password"
       );
 
+
     const passwordToggle =
       document.getElementById(
         "passwordToggle"
       );
 
+
     const loginButton =
       document.getElementById(
         "loginButton"
       );
+
 
     const errorMessage =
       document.getElementById(
@@ -1256,6 +1636,7 @@
                 "admin.html";
 
             }
+
 
           } catch (error) {
 
@@ -1316,6 +1697,7 @@
         const username =
           usernameInput.value.trim();
 
+
         const password =
           passwordInput.value;
 
@@ -1354,20 +1736,14 @@
           let result;
 
 
-          /*
-            ================================================
-            LOGIN LOCAL
-            ================================================
-          */
+          /* ==============================================
+             LOGIN LOCAL
+          ============================================== */
 
           if (
             LOGIN_MODE ===
             "LOCAL"
           ) {
-
-            /*
-              Simulasi pemeriksaan login.
-            */
 
             await delay(600);
 
@@ -1380,18 +1756,24 @@
             ) {
 
               result = {
+
                 success: true,
+
                 data: {
                   username: username
                 }
+
               };
 
             } else {
 
               result = {
+
                 success: false,
+
                 message:
                   "Username atau password salah."
+
               };
 
             }
@@ -1399,11 +1781,9 @@
           }
 
 
-          /*
-            ================================================
-            LOGIN GOOGLE APPS SCRIPT
-            ================================================
-          */
+          /* ==============================================
+             LOGIN GOOGLE APPS SCRIPT
+          ============================================== */
 
           else {
 
@@ -1429,10 +1809,9 @@
           }
 
 
-          /*
-            Simpan session sederhana
-            di browser.
-          */
+          /* ==============================================
+             SIMPAN SESSION
+          ============================================== */
 
           const session = {
 
@@ -1453,11 +1832,6 @@
             JSON.stringify(session)
           );
 
-
-          /*
-            Beri sedikit waktu agar
-            user melihat proses berhasil.
-          */
 
           await delay(300);
 
@@ -1496,42 +1870,18 @@
       password
     ) {
 
-      /*
-        Apps Script diharapkan menerima:
-
-        {
-          action: "adminLogin",
-          username: "...",
-          password: "..."
-        }
-
-        dan mengembalikan:
-
-        {
-          success: true,
-          data: {
-            username: "admin"
-          }
-        }
-
-        atau:
-
-        {
-          success: false,
-          message: "Username atau password salah."
-        }
-      */
-
-
       const response =
         await fetch(
           API_URL,
           {
+
             method: "POST",
 
             headers: {
+
               "Content-Type":
                 "text/plain;charset=utf-8"
+
             },
 
             body:
@@ -1595,6 +1945,7 @@
       errorMessage.textContent =
         message;
 
+
       errorMessage.classList.add(
         "show"
       );
@@ -1606,6 +1957,7 @@
 
       errorMessage.textContent =
         "";
+
 
       errorMessage.classList.remove(
         "show"
@@ -1628,11 +1980,14 @@
           "loading"
         );
 
+
         loginButton.disabled =
           true;
 
+
         usernameInput.disabled =
           true;
+
 
         passwordInput.disabled =
           true;
@@ -1643,11 +1998,14 @@
           "loading"
         );
 
+
         loginButton.disabled =
           false;
 
+
         usernameInput.disabled =
           false;
+
 
         passwordInput.disabled =
           false;
@@ -1672,6 +2030,8 @@
       );
 
     }
+
+
   </script>
 
 </body>
